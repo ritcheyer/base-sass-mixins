@@ -1,0 +1,84 @@
+@mixin triangle($direction, $color, $size) {
+
+	@if $direction == "left" {
+		border-bottom: $size solid transparent;
+		border-right: $size solid $color;
+		border-top: $size solid transparent;
+	}
+	@else if $direction == "right" {
+		border-bottom: $size solid transparent;
+		border-left: $size solid $color;
+		border-top: $size solid transparent;
+	}
+	@else if $direction == "up" {
+		border-bottom: $size solid $color;
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+	}
+	@else if $direction == "down" {
+		border-right: $size solid transparent;
+		border-left: $size solid transparent;
+		border-top: $size solid $color;
+	}
+
+	height: 0;
+	width: 0;
+}
+
+@mixin box-shadow($shadows) {
+	-webkit-box-shadow: $shadows;
+	-moz-box-shadow: $shadows;
+	box-shadow: $shadows;
+}
+
+@mixin text-shadow($shadows) {
+	-webkit-text-shadow: $shadows;
+	-moz-text-shadow: $shadows;
+	-o-text-shadow: $shadows;
+	text-shadow: $shadows;
+}
+
+// Prevent user selection on click/drag
+@mixin no-selection {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@mixin border-radius($values) {
+	-webkit-border-radius: $values;
+	-moz-border-radius: $values;
+	border-radius: $values;
+
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+}
+
+@mixin transition($transitions, $delay: 0) {
+	-webkit-transition: $transitions;
+	-moz-transition: $transitions;
+	-o-transition: $transitions;
+	transition: $transitions;
+
+	@if($delay > 0) {
+		-webkit-transition-delay: $delay;
+		-moz-transition-delay: $delay;
+		-o-transition-delay: $delay;
+		transition-delay: $delay;
+	}
+}
+
+@mixin simple-transition($property: all, $duration: 0.15s, $function: ease-in-out, $delay: 0) {
+	@include transition($property $duration $function $delay);
+}
+
+
+@mixin ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
