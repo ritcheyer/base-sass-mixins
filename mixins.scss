@@ -1,3 +1,5 @@
+// Base Mixins for use on any web project. There will likely be more to collect here.
+
 @mixin triangle($direction, $color, $size) {
 
 	@if $direction == "left" {
